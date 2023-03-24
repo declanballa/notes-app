@@ -2,7 +2,7 @@ import { SSTConfig } from "sst";
 
 import * as stacks from './stacks/stacks';
 
-export default {
+export default { 
   config(_input) {
     return {
       name: "notes",
