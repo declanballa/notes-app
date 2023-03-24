@@ -4,12 +4,12 @@ import handler from "../../core/src/handler";
 import dynamoDb from "../../core/src/dynamodb";
 
 export const main = handler(async (event) => {
+  console.log(event);
   const data = JSON.parse(event.body);
   const params = {
     TableName: Table.Notes.tableName,
     Item: {
-      // The attributes of the item to be created
-      userId: "123", // The id of the author
+      userId: event.requestContext.authorizer.iam.cognitoIdentity.identityId,
       noteId: uuid.v1(), // A unique uuid
       content: data.content, // Parsed from request body
       attachment: data.attachment, // Parsed from request body
@@ -21,3 +21,6 @@ export const main = handler(async (event) => {
 
   return params.Item;
 });
+
+
+
