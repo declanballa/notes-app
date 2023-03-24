@@ -10,6 +10,10 @@ export default {
     };
   },
   stacks(app) {
-    app.stack(stacks.StorageStack).stack(stacks.ApiStack).stack(stacks.AuthStack);
+    app
+      .stack(stacks.StorageStack)
+      .stack(stacks.ApiStack)
+      .stack(stacks.AuthStack)
+      .stack(stacks.FrontendStack);
   },
 } satisfies SSTConfig; 
